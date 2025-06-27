@@ -22,3 +22,6 @@ A Java Swing application demonstrating efficient seat management using core Data
 ```bash
 javac src/TicketSystem.java
 java src/TicketSystem
+
+## 📄 Documentation
+[Full Project Report](/docs/Project_Report.pdf)
