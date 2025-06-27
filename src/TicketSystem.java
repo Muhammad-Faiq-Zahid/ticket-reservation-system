@@ -141,37 +141,47 @@ class TicketSystem {
         seatTree.root = seatTree.insert(seatTree.root, "Premium", 3000, 7);
 
         JFrame frame = new JFrame("Ticket Reservation System");
-        frame.setSize(600, 400);
+        frame.setSize(700, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new BorderLayout());
+        
+        // Main panel with BorderLayout
+        JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JPanel inputPanel = new JPanel(new GridLayout(3, 2));
-        categoryField = new JTextField();
+        // Input panel with GridLayout
+        JPanel inputPanel = new JPanel(new GridLayout(4, 2, 5, 5));
+        inputPanel.setBorder(BorderFactory.createTitledBorder("Booking Details"));
+
+        JComboBox <String>  categoryCombo = new JComboBox<>();
+        categoryCombo.addItem("VIP");
+        categoryCombo.addItem("Premium");
+        categoryCombo.addItem("Economy");
+
         seatNumberField = new JTextField();
         customerNameField = new JTextField();
 
         inputPanel.add(new JLabel("Category:"));
-        inputPanel.add(categoryField);
+        inputPanel.add(categoryCombo);
         inputPanel.add(new JLabel("Seat Number:"));
         inputPanel.add(seatNumberField);
         inputPanel.add(new JLabel("Customer Name:"));
         inputPanel.add(customerNameField);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(1, 5));
+        JPanel buttonPanel = new JPanel(new GridLayout(1, 5, 5, 5));
         JButton bookBtn = new JButton("Book");
         JButton cancelBtn = new JButton("Cancel");
         JButton undoBookBtn = new JButton("Undo Book");
         JButton undoCancelBtn = new JButton("Undo Cancel");
         JButton infoBtn = new JButton("Show Info");
-
+        
 
         bookBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String category = categoryField.getText().trim();
+                String category = (String)categoryCombo.getSelectedItem();
                 String seatNumber = seatNumberField.getText().trim();
                 String customerName = customerNameField.getText().trim();
 
-                if (category.isEmpty() || seatNumber.isEmpty() || customerName.isEmpty()) {
+                if ( seatNumber.isEmpty() || customerName.isEmpty()) {
                     outputArea.append("Error: All fields are required!\n");
                     return;
                 }
