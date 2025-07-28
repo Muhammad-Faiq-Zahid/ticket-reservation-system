@@ -27,7 +27,7 @@ A robust Java Swing application demonstrating efficient seat management using co
 ### Installation
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/ticket-reservation-system.git
+git clone https://github.com/Muhammad-Faiq-Zahid/ticket-reservation-system.git
 
 # Compile and run
 javac src/TicketSystem.java
